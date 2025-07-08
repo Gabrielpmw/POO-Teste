@@ -1,6 +1,6 @@
 package Resource;
 
-import Service.CadastroService;
+import Service.AulaServiceImpl;
 import Service.CadastroServiceImpl;
 import Service.RelatorioService;
 import Service.RelatorioServiceImpl;
@@ -12,6 +12,7 @@ public class AcademiaResource {
         boolean menu = true;
         CadastroServiceImpl cadastroService = new CadastroServiceImpl();
         RelatorioService relatorioService = new RelatorioServiceImpl(cadastroService);
+        AulaServiceImpl aulaService = new AulaServiceImpl(cadastroService);
         Scanner scanner = new Scanner(System.in);
 
         do {
@@ -27,10 +28,12 @@ public class AcademiaResource {
                     cadastroService.cadastrar();
                     break;
                 case 2:
-
+                    aulaService.aulas();
                     break;
                 case 3:
                     relatorioService.relatorio();
+                    break;
+                case 4:
             }
 
         }while (menu);

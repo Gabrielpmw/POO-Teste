@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Aula {
@@ -9,7 +10,7 @@ public class Aula {
     private String especializacao;
     private Instrutor instrutor;
     private int vaga;
-    private List<Cliente> alunos;
+    private List<Cliente> alunos = new ArrayList<>();
     private boolean disponivel;
 
 
@@ -28,6 +29,17 @@ public class Aula {
         }
 
         return new Aula(nome, especializacao, instrutor, vaga);
+    }
+
+    public static Aula inserirAlunos(Aula aula, List<Cliente> clientes){
+
+        if (clientes.isEmpty()){
+            throw new RuntimeException("Lista vazia");
+        }else {
+            aula.alunos.addAll(clientes);
+        }
+
+        return null;
     }
 
     public String getNome() {
@@ -84,11 +96,13 @@ public class Aula {
 
     @Override
     public String toString() {
+        System.out.println(" ");
         return "Aula {" +
+                "id = '" + id + '\'' +
                 "nome = '" + nome + '\'' +
-                ", especialização='" + especializacao + '\'' +
+                ", especialização = '" + especializacao + '\'' +
                 ", quantidade de vagas disponíveis = '" + getVaga() + '\'' +
                 ", disponível para inscrição = '" + isDisponivel() + '\'' +
-                ", instrutor = " + instrutor + '}';
+                 "\n"+instrutor + '}';
     }
 }
